@@ -1,0 +1,49 @@
+	let root;	
+	class BSTNode
+	{
+		constructor(data) {
+		this.left = null;
+		this.right = null;
+		this.data = data;
+		}
+	}
+	function Max(BSTnode)
+	{
+		if (BSTnode == null)
+			return 1;
+
+		let BST = BSTnode.data;
+		let lBST = Max(BSTnode.left);
+		let rBST = Max(BSTnode.right);
+
+		if (lBST > BST)
+			BST = lBST;
+		if (rBST > BST)
+			BST = rBST;
+		return BST;
+	}
+      function Min(BSTnode) {
+        if (BSTnode == null)
+	    return 1;
+ 
+        var Bst = BSTnode.data;
+        var lBST = Min(BSTnode.left);
+        var rBST = Min(BSTnode.right);
+
+        if (lBST < Bst) Bst = lBST;
+        if (rBST < Bst) Bst = rBST;
+        return Bst;
+      }
+	  
+	root = new BSTNode(4);
+	root.left = new BSTNode(7);
+	root.right = new BSTNode(5);
+	root.left.right = new BSTNode(65);
+	root.left.right.left = new BSTNode(1);
+	root.left.right.right = new BSTNode(11);
+	root.right.right = new BSTNode(9);
+	root.right.right.left = new BSTNode(4);
+
+	console.log("Maximum element is "+ Max(root));
+	console.log("Minimum element is "+ Min(root));
+	
